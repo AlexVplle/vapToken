@@ -13,3 +13,21 @@ interface IERC20 {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
+
+contract VAPtoken is IERC20 {
+    string public constant name = "VapToken";
+    string public constant symbol = "VAP";
+    uint8 public constant decimals = 18;
+
+    mapping(address => uint) balances;
+    mapping(address => mapping(address => uint256)) allowed;
+
+    uint256 totalSupply;
+
+    constructor(uint256 total) public {
+        totalSupply = total;
+        balances[msg.sender] = totalSupply;
+    }
+
+    
+}
